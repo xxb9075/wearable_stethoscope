@@ -1,0 +1,148 @@
+// Copyright (c) 2024 Nordic Semiconductor ASA
+// SPDX-License-Identifier: Apache-2.0
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+
+/ {
+	model = "apnea_v2";
+	compatible = "ucsd,apnea-v2";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+	};
+
+	fstab {
+		compatible = "zephyr,fstab";
+		lfs1: lfs1 {
+			compatible = "zephyr,fstab,littlefs";
+			mount-point = "/lfs";
+			partition = <&lfs1_part>;
+			//automount;
+			read-size = <512>;
+			prog-size = <4096>;
+			cache-size = <4096>;
+			lookahead-size = <4096>;
+			//block_size = <262144>;
+			//block_count = <4096>;
+			block-cycles = <1>;
+		};
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led0: led_0 {
+			gpios = <&gpio0 19 GPIO_ACTIVE_LOW>;
+			label = "Green LED 0";
+		};
+	};
+
+	/* These aliases are provided for compatibility with samples */
+	aliases {
+		led0 = &led0;
+		spi-flash0 = &as5f;
+	};
+
+};
+
+&adc {
+	status = "okay";
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&flash0 {
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x0 0xc000>;
+		};
+		slot0_partition: partition@c000 {
+			label = "image-0";
+			reg = <0xc000 0x72000>;
+		};
+		slot1_partition: partition@7e000 {
+			label = "image-1";
+			reg = <0x7e000 0x72000>;
+		};
+		scratch_partition: partition@f0000 {
+			label = "image-scratch";
+			reg = <0xf0000 0xa000>;
+		};
+		storage_partition: partition@fa000 {
+			label = "storage";
+			reg = <0xfa000 0x6000>;
+		};
+	};
+};
+
+&spi2 {
+	status = "okay";
+
+	// See alliance,as5f.yaml
+	as5f: as5f18g04snd@0 {
+		compatible = "alliance,as5f";
+		label = "AS5F";	// Label required for older versions of Zephyr
+		reg = <0>;
+		jedec-id = [52];
+		size-in-bytes = <0x40000000>;
+		sck-frequency = <120000000>;
+		// SPI pins are not assigned; the external flash is not used by this firmware
+	};
+
+};
+
+&i2c0 {
+	compatible = "nordic,nrf-twi";
+    status = "okay";
+    sda-pin = < 41 >;	// P1.09 -> 32 + 9
+    scl-pin = < 12 >;	// P0.12 -> 12
+	clock-frequency = <I2C_BITRATE_FAST>;
+    max32664@55{
+        status = "okay";
+        compatible = "max,max32664";
+        reg = < 0x55 >;
+        label = "MAX32664";
+        rst-gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;		// Used to be GPIO_ACTIVE_HIGH during testing
+        mfio-gpios = <&gpio0 11 GPIO_PULL_UP>;
+    };
+};
+
+/delete-node/ &storage_partition;
+
+&as5f {
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		lfs1_part: partition@0 {
+			label = "storage";
+			reg = <0x00000000 0x40000000>;	// Format compatible "fixed-partitions" is [register, space]
+		};
+	};
+};
+
+zephyr_udc0: &usbd {
+	compatible = "nordic,nrf-usbd";
+	status = "okay";
+};
+
+
+

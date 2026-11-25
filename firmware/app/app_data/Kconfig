@@ -1,0 +1,7 @@
+menu "Data assembler application library"
+menuconfig APP_DATA
+	bool "Enable BLE transmission data assembler application libraries"
+	default n
+	help
+	  Enable this option to include the BLE transmission data assembler application libraries.
+endmenu

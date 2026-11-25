@@ -1,0 +1,11 @@
+# max32664 options
+menu "Max32664 driver"
+menuconfig MAX32664
+	bool "max32664 drivers"
+	# Requires a max,max32664 node in the devicetree
+	default n
+	depends on I2C
+	help
+	  Enable max32664 driver configuration.
+
+endmenu

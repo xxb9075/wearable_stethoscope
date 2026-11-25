@@ -1,0 +1,11 @@
+sample:
+  name: wearable_stethoscope_firmware
+  description: Four-microphone acquisition and BLE streaming firmware for the wearable stethoscope
+tests:
+  apnea.firmware.build:
+    build_only: true
+    platform_allow: apnea_v2 apnea_v1
+  apnea.firmware.build.dk:
+    build_only: true
+    platform_allow: nrf52840dk_nrf52840
+    extra_args: DTC_OVERLAY_FILE=boards/arm/nrf52840dk_nrf52840/nrf52840dk_nrf52840.overlay

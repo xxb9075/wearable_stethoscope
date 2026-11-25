@@ -1,0 +1,8 @@
+menu "Nordic ADC driver"
+menuconfig NORDIC_ADC
+	bool "nordic adc drivers"
+	default n
+	help
+	  Enable nordic adc driver configuration.
+
+endmenu

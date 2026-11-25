@@ -1,0 +1,7 @@
+menu "BLE Interface"
+
+menuconfig DATA_BLE
+    bool "Enable BLE interface"
+    default n
+
+endmenu

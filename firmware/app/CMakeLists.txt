@@ -1,0 +1,6 @@
+zephyr_include_directories(${PROJECT_SOURCE_DIR}/include/app)
+zephyr_include_directories(${PROJECT_SOURCE_DIR}/include/drivers)
+add_subdirectory_ifdef(CONFIG_APP_PPG           app_ppg)
+add_subdirectory_ifdef(CONFIG_DATA_BLE          data_ble)
+add_subdirectory_ifdef(CONFIG_APP_MIC           app_mic)
+add_subdirectory_ifdef(CONFIG_APP_DATA          app_data)

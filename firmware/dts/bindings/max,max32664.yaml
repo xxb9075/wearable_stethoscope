@@ -1,0 +1,22 @@
+# Copyright (c) 2019 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+    MAX32664 biometric sensor hub (I2C)
+
+compatible: "max,max32664"
+
+include: base.yaml
+
+properties:
+  rst-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      Reset pin (RSTN) of the sensor hub, active low. Held low for 10 ms with
+      MFIO high to start the hub in application mode.
+  mfio-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      Multifunction pin

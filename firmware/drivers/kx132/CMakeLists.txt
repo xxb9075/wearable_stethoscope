@@ -1,0 +1,1 @@
+zephyr_library_sources_ifdef(CONFIG_KX132  kx132.c)

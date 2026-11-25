@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 xxb9075
+Copyright (c) 2022-2026 The authors of "A Wearable Stethoscope for Source-Separated Body Acoustic Monitoring"
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Third-party code:
+
+- firmware/: files that carry their own SPDX license header, based on Zephyr
+  and Nordic Semiconductor examples, remain under the Apache License,
+  Version 2.0 (firmware/LICENSE-APACHE-2.0). firmware/drivers/max32664/max32664.c
+  is ported from the SparkFun Bio Sensor Hub Arduino Library (Beerware license;
+  the notice is kept in the file). See firmware/LICENSE.
+- source_separation_classification/src/ is adapted from RespireNet
+  (MIT License, Copyright (c) Microsoft Corporation).

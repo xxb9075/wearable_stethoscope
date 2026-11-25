@@ -1,0 +1,10 @@
+menu "KX132 driver"
+
+menuconfig KX132
+	bool "kx132 drivers"
+	default n
+	depends on I2C
+	help
+	  Enable KX132 driver configuration.
+
+endmenu

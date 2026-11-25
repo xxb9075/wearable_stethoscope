@@ -1,0 +1,17 @@
+&adc {
+    status = "okay";
+};
+
+&arduino_i2c {
+    status = "okay";
+    sda-pin = < 26 >;
+    scl-pin = < 27 >;
+    max32664@55{
+        status = "okay";
+        compatible = "max,max32664";
+        reg = < 0x55 >;
+        label = "MAX32664";
+        rst-gpios = <&gpio1 12 GPIO_ACTIVE_HIGH>;
+        mfio-gpios = <&gpio1 11 GPIO_PULL_UP>;
+    };
+};

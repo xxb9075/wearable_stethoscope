@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+
+# Editors and OS files
+.vscode/
+*.code-workspace
+.DS_Store
+
+# Recordings (never committed)
+data/
+*.flac
+*.wav
+*_MIC.csv
+*_post.csv

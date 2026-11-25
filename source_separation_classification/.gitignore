@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# Editors and OS files
+.vscode/
+*.code-workspace
+.DS_Store
+
+# Data, models and outputs (not part of the repository)
+data/
+demo/data/
+models/
+outputs/
+*.log
+
+# MATLAB / AMICA temporary files
+amicaouttmp/
+*.fdt
+*.asv

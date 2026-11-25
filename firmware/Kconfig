@@ -1,0 +1,9 @@
+menu "Apnea"
+# rsource is for relative directory, source is absolute
+rsource "drivers/Kconfig"
+rsource "app/Kconfig"
+endmenu
+
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu

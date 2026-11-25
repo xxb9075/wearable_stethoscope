@@ -1,0 +1,1 @@
+zephyr_library_sources_ifdef(CONFIG_APP_DATA app_data.c)

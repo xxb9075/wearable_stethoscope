@@ -1,0 +1,9 @@
+menu "Application Libraries"
+
+rsource "data_ble/Kconfig"
+rsource "app_mic/Kconfig"
+rsource "app_ppg/Kconfig"
+rsource "app_data/Kconfig"
+
+
+endmenu

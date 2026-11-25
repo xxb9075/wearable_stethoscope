@@ -1,0 +1,7 @@
+menu "PPG application library"
+menuconfig APP_PPG
+	bool "Enable MAX30101&MAX32664 PPG Application libraries"
+	default n
+	help
+	  Enable this option to include the PPG related Application libraries.
+endmenu

@@ -1,0 +1,9 @@
+menu "Custom Device Drivers"
+
+rsource "max32664/Kconfig"
+
+rsource "kx132/Kconfig"
+
+rsource "nordic_adc/Kconfig"
+
+endmenu

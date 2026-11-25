@@ -1,0 +1,7 @@
+menu "Microphone interface with Nordic ADC application library"
+menuconfig APP_MIC
+	bool "Enable Nordic ADC Application libraries"
+	default n
+	help
+	  Enable this option to include the Nordic ADC Application libraries.
+endmenu
